@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lobby"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/explode"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/level_2"
+        android:layout_width="195dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button_border_orange"
+        android:text="@string/levels"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528" />
+
+    <Button
+        android:id="@+id/level_1"
+        android:layout_width="245dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button_border_orange"
+        android:text="@string/new_game"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.412" />
+
+    <Button
+        android:id="@+id/level_3"
+        android:layout_width="145dp"
+        android:layout_height="55dp"
+        android:background="@drawable/button_border_orange"
+        android:text="@string/exit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
+    <ImageView
+        android:id="@+id/lobby_tittle"
+        android:layout_width="391dp"
+        android:layout_height="103dp"
+        android:contentDescription="@string/main_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.176"
+        app:srcCompat="@drawable/title" />
+
+    <ImageView
+        android:id="@+id/cartoon_bomb"
+        android:layout_width="134dp"
+        android:layout_height="96dp"
+        android:contentDescription="@string/cartoon_bomb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flag"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/cartoon_bomb" />
+
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="100dp"
+        android:layout_height="117dp"
+        android:contentDescription="@string/flag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/flag" />
+
+    <ImageView
+        android:id="@+id/sparks"
+        android:layout_width="409dp"
+        android:layout_height="257dp"
+        android:contentDescription="@string/sparks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sparks" />
+
+    <ImageButton
+        android:id="@+id/settings_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#00ffffff"
+        android:contentDescription="@string/settings"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.013"
+        app:srcCompat="@drawable/setting" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
