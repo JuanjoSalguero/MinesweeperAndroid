@@ -12,7 +12,7 @@
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
     <string name="levels_title">Levels Title</string>
-    <string name="back_arrow">Back Arrow</string>
+    <string name="back_button">Back Button</string>
     <string name="sound_on">Sound On</string>
     <string name="sound_off">Sound Off</string>
     <string name="sound_lines">Sound Lines</string>

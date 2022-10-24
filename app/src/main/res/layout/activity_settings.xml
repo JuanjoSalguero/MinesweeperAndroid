@@ -22,11 +22,11 @@
         app:srcCompat="@drawable/sparks" />
 
     <ImageButton
-        android:id="@+id/back_arrow"
+        android:id="@+id/back_button"
         android:layout_width="87dp"
         android:layout_height="70dp"
         android:backgroundTint="#00ffffff"
-        android:contentDescription="@string/back_arrow"
+        android:contentDescription="@string/back_button"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         app:srcCompat="@drawable/flag" />
 
     <ImageButton
-        android:id="@+id/sound_off"
+        android:id="@+id/sound_off_button"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:backgroundTint="#00ffffff"
@@ -93,7 +93,7 @@
         app:srcCompat="@drawable/sound_off" />
 
     <ImageButton
-        android:id="@+id/sound_on"
+        android:id="@+id/sound_on_button"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:backgroundTint="#00ffffff"
