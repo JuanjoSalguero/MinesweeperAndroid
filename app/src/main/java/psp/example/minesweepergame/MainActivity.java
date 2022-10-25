@@ -3,23 +3,41 @@ package psp.example.minesweepergame;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
+
+    MediaPlayer mySong; // Background sound
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Plays background music
+        mySong = MediaPlayer.create(MainActivity.this, R.raw.music);
+        mySong.start();
+
         openSettingsActivity(); // Opens Settings Activity
         openLevelsActivity();   // Opens Levels Activity
-        exitApp();             // Exit the application
+        exitApp();              // Exit the application
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        mySong.start();   // When on pause, music is paused. On release, music is released
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mySong.pause();   // When on pause, music is paused. On release, music is released
     }
 
     // Method to switch to Settings activity
@@ -39,13 +57,7 @@ public class MainActivity extends AppCompatActivity {
     // Method to exit the application
     private void exitApp(){
         Button exitButton = findViewById(R.id.exit_button);
-        exitButton.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                exitButtonPressed();
-            }
-        });
+        exitButton.setOnClickListener(view -> exitButtonPressed());
     }
 
     // Method to confirm exit the app
@@ -54,20 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setMessage("Are you sure you want to exit Minesweeper?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                });
+                .setPositiveButton("Yes", (dialogInterface, i) -> finish())
+                .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
 }
