@@ -36,21 +36,6 @@
         app:layout_constraintVertical_bias="0.009"
         app:srcCompat="@drawable/back_arrow" />
 
-    <ImageButton
-        android:id="@+id/settings_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:backgroundTint="#00ffffff"
-        android:contentDescription="@string/settings"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.013"
-        app:srcCompat="@drawable/setting" />
-
     <Button
         android:id="@+id/level_2"
         android:layout_width="195dp"
