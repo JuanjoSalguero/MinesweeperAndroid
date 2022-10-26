@@ -18,4 +18,5 @@
     <string name="sound_lines">Sound Lines</string>
     <string name="info_button">Info Button</string>
     <string name="about_button">ABOUT</string>
+    <string name="rules_button">RULES</string>
 </resources>

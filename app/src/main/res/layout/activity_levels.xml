@@ -123,20 +123,4 @@
         app:layout_constraintVertical_bias="0.17"
         app:srcCompat="@drawable/levels_title" />
 
-    <ImageButton
-        android:id="@+id/info_button"
-        android:layout_width="74dp"
-        android:layout_height="64dp"
-        android:backgroundTint="#00ffffff"
-        android:contentDescription="@string/info_button"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.993"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012"
-        app:srcCompat="@drawable/info"
-        tools:ignore="RedundantDescriptionCheck" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

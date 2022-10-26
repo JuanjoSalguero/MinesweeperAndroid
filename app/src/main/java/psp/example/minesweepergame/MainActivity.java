@@ -12,7 +12,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    MediaPlayer mySong; // Background sound
+    //MediaPlayer mySong; // Background sound
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,24 +20,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Plays background music
-        mySong = MediaPlayer.create(MainActivity.this, R.raw.music);
-        mySong.start();
+        Intent svc=new Intent(this, BackgroundSoundService.class);
+        startService(svc);
 
         openSettingsActivity(); // Opens Settings Activity
         openLevelsActivity();   // Opens Levels Activity
         exitApp();              // Exit the application
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-        mySong.start();   // When on pause, music is paused. On release, music is released
-    }
-
-    @Override
-    protected void onPause(){
-        super.onPause();
-        mySong.pause();   // When on pause, music is paused. On release, music is released
     }
 
     // Method to switch to Settings activity
@@ -63,10 +51,12 @@ public class MainActivity extends AppCompatActivity {
     // Method to confirm exit the app
     private void exitButtonPressed(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
+                            // Message to show in the dialog
         builder.setMessage("Are you sure you want to exit Minesweeper?")
                 .setCancelable(false)
+                // Yes option, close de app
                 .setPositiveButton("Yes", (dialogInterface, i) -> finish())
+                // No option, closes de dialog
                 .setNegativeButton("No", (dialogInterface, i) -> dialogInterface.cancel());
         AlertDialog alertDialog = builder.create();
         alertDialog.show();

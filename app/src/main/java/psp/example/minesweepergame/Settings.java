@@ -1,10 +1,12 @@
 package psp.example.minesweepergame;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -15,7 +17,9 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        muteAndUnmute();
+        muteAndUnmute();    // To mute and unmute the sound
+        aboutButton();      // To open about information
+        rulesButton();      // To open rules information
         closeSettingsActivity();  // Closes Settings activity
     }
 
@@ -52,5 +56,50 @@ public class Settings extends AppCompatActivity {
                     "Sound unmuted", Toast.LENGTH_SHORT);
             unmuteToast.show();
         });
+    }
+
+    // Method to acced the about information
+    private void aboutButton(){
+        Button aboutButton = findViewById(R.id.about_button);
+        aboutButton.setOnClickListener(view ->
+                alertDialog("Minesweeper Android game" +
+                " designed and developed by Juanjo Salguero."));
+    }
+
+    // Method to acced the rules information
+    private void rulesButton(){
+        Button rulesButton = findViewById(R.id.rules_button);
+        rulesButton.setOnClickListener(view ->
+                alertDialog("* Minesweeper Android Game *\n" +
+                        "\nMinesweeper for Android lets you\n" +
+                        "play the classic logic game where\n" +
+                        "you have to use your wit to clean\n" +
+                        "mines from gameboard.\n" +
+                        "\nGame is played in mine mode,\n" +
+                        "where you click to open tiles. Use\n" +
+                        "long-click to mark flags where you\n" +
+                        "there is a bomb.\n" +
+                        "\nTip: Try to press open tile where\n" +
+                        "number of flags around tile equals\n" +
+                        "number of tile! It is by far the\n" +
+                        "fastest way to play the game. And\n" +
+                        "to hit the highest score.\n" +
+                        "\nLevels:\n" +
+                        "- Easy: 8 x 8 with 15 bombs.\n" +
+                        "- Medium: 12 x 12 with 30 bombs.\n" +
+                        "- Hard: 16 x 16 with 60 bombs.\n" +
+                        "\nVictory:\n All tiles without bombs\n" +
+                        "hav been unlocked.\n" +
+                        "\nGood Luck :)"));
+    }
+
+    // Method to confirm exit the app
+    private void alertDialog(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage(message)
+                .setPositiveButton("Close", (dialogInterface, i) -> dialogInterface.cancel());
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
