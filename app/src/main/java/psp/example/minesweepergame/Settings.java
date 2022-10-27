@@ -63,34 +63,34 @@ public class Settings extends AppCompatActivity {
         Button aboutButton = findViewById(R.id.about_button);
         aboutButton.setOnClickListener(view ->
                 alertDialog("Minesweeper Android game" +
-                " designed and developed by Juanjo Salguero."));
+                " designed and developed by Juanjo Salguero ®️."));
     }
 
     // Method to acced the rules information
     private void rulesButton(){
         Button rulesButton = findViewById(R.id.rules_button);
         rulesButton.setOnClickListener(view ->
-                alertDialog("* Minesweeper Android Game *\n" +
+                alertDialog("\uD83C\uDFAE Minesweeper Android Game \uD83D\uDD79\n" +
                         "\nMinesweeper for Android lets you\n" +
                         "play the classic logic game where\n" +
                         "you have to use your wit to clean\n" +
                         "mines from gameboard.\n" +
                         "\nGame is played in mine mode,\n" +
                         "where you click to open tiles. Use\n" +
-                        "long-click to mark flags where you\n" +
-                        "there is a bomb.\n" +
-                        "\nTip: Try to press open tile where\n" +
+                        "long-click to mark flags \uD83D\uDEA9 where you\n" +
+                        "there is a bomb \uD83D\uDCA3.\n" +
+                        "\n\uD83D\uDDE8Tip: Try to press open tile where\n" +
                         "number of flags around tile equals\n" +
                         "number of tile! It is by far the\n" +
                         "fastest way to play the game. And\n" +
                         "to hit the highest score.\n" +
-                        "\nLevels:\n" +
+                        "\n\uD83C\uDD99Levels:\n" +
                         "- Easy: 8 x 8 with 15 bombs.\n" +
                         "- Medium: 12 x 12 with 30 bombs.\n" +
                         "- Hard: 16 x 16 with 60 bombs.\n" +
-                        "\nVictory:\n All tiles without bombs\n" +
+                        "\n\uD83C\uDFC6Victory:\nAll tiles without bombs\n" +
                         "hav been unlocked.\n" +
-                        "\nGood Luck :)"));
+                        "\nGood Luck \uD83D\uDE42"));
     }
 
     // Method to confirm exit the app

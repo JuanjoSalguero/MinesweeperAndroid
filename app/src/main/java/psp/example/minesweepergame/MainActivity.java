@@ -3,27 +3,20 @@ package psp.example.minesweepergame;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    //MediaPlayer mySong; // Background sound
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Plays background music
-        Intent svc=new Intent(this, BackgroundSoundService.class);
-        startService(svc);
-
         openSettingsActivity(); // Opens Settings Activity
+        openNewGameActivity();  // Opens New Game Activity
         openLevelsActivity();   // Opens Levels Activity
         exitApp();              // Exit the application
     }
@@ -33,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
         ImageButton settingsButton = findViewById(R.id.settings_button);
         settingsButton.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, Settings.class)));
+    }
+
+    // Method to switch to New Game activity
+    private void openNewGameActivity(){
+        Button newGameButton = findViewById(R.id.new_game_button);
+        newGameButton.setOnClickListener(view ->
+                startActivity(new Intent(MainActivity.this, GameActivity.class)));
     }
 
     // Method to switch to Levels activity
