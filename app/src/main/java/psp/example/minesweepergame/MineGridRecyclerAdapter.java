@@ -56,45 +56,49 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
         }
 
         public void bind(final Cell cell) {
-            itemView.setBackgroundColor(Color.LTGRAY);
+            itemView.setBackgroundColor(Color.WHITE);
 
             itemView.setOnClickListener(view -> listener.onCellClick(cell));
 
-            // Display the value inside the textView (1, 2, 3, bombs, blanks...) for that tile int he grid
-            if (cell.getValue() == Cell.BOMB) {
-                valueTextView.setText(R.string.bomb);
-                itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-            } else if (cell.getValue() == Cell.BLANK) {
-                valueTextView.setText("");
-                itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-            } else {
-                // Depending on the numbers
-                valueTextView.setText(String.valueOf(cell.getValue()));
-                if (cell.getValue() == 1) {
-                    valueTextView.setTextColor(Color.rgb(0, 1, 253));
+            if(cell.getIsRevealed()){
+                // Display the value inside the textView (1, 2, 3, bombs, blanks...) for that tile int he grid
+                if (cell.getValue() == Cell.BOMB) {
+                    valueTextView.setText(R.string.bomb);
+                    itemView.setBackgroundColor(Color.TRANSPARENT);
+                } else if (cell.getValue() == Cell.BLANK) {
+                    valueTextView.setText("");
                     itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                } else if (cell.getValue() == 2) {
-                    valueTextView.setTextColor(Color.rgb(1, 126, 0));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                } else if (cell.getValue() == 3) {
-                    valueTextView.setTextColor(Color.rgb(254, 0, 0));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                }else if (cell.getValue() == 4) {
-                    valueTextView.setTextColor(Color.rgb(1, 1, 127));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                }else if (cell.getValue() == 5) {
-                    valueTextView.setTextColor(Color.rgb(129, 2, 1));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                }else if (cell.getValue() == 6) {
-                    valueTextView.setTextColor(Color.rgb(0, 128, 128));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                }else if (cell.getValue() == 7) {
-                    valueTextView.setTextColor(Color.rgb(0, 0, 0));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
-                }else if (cell.getValue() == 8) {
-                    valueTextView.setTextColor(Color.rgb(128, 128, 128));
-                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                } else {
+                    // Depending on the numbers
+                    valueTextView.setText(String.valueOf(cell.getValue()));
+                    if (cell.getValue() == 1) {
+                        valueTextView.setTextColor(Color.rgb(0, 1, 253));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 2) {
+                        valueTextView.setTextColor(Color.rgb(1, 126, 0));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 3) {
+                        valueTextView.setTextColor(Color.rgb(254, 0, 0));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 4) {
+                        valueTextView.setTextColor(Color.rgb(1, 1, 127));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 5) {
+                        valueTextView.setTextColor(Color.rgb(129, 2, 1));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 6) {
+                        valueTextView.setTextColor(Color.rgb(0, 128, 128));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 7) {
+                        valueTextView.setTextColor(Color.rgb(0, 0, 0));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    } else if (cell.getValue() == 8) {
+                        valueTextView.setTextColor(Color.rgb(128, 128, 128));
+                        itemView.setBackgroundColor(Color.rgb(192, 192, 192));
+                    }
                 }
+            }else if (cell.getIsFlagged()){
+                valueTextView.setText(R.string.flag);
             }
         }
     }

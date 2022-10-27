@@ -113,4 +113,12 @@ public class MineGrid {
 
         return adjacentCells;
     }
+
+    public void revealAllBombs(){
+        for (Cell cell: cells){
+            if (cell.getValue() == Cell.BOMB){
+                cell.setIsRevealed(true);
+            }
+        }
+    }
 }
