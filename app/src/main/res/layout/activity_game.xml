@@ -2,8 +2,90 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lobby"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/explode"
     tools:context=".GameActivity">
+
+    <ImageView
+        android:id="@+id/flag2"
+        android:layout_width="100dp"
+        android:layout_height="117dp"
+        android:contentDescription="@string/flag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/flag" />
+
+    <ImageView
+        android:id="@+id/cartoon_bomb2"
+        android:layout_width="134dp"
+        android:layout_height="96dp"
+        android:contentDescription="@string/cartoon_bomb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flag"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/cartoon_bomb" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:text="@string/default_count"
+            android:textColor="#FF9800"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/smiley"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/smiley"
+            android:textSize="64sp" />
+
+        <TextView
+            android:id="@+id/main_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginRight="32dp"
+            android:text="@string/default_count"
+            android:textColor="#FF9800"
+            android:textSize="48sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/game_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout"
+        app:layout_constraintVertical_bias="0.092"
+        tools:itemCount="8" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
