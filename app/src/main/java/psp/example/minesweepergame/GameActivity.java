@@ -9,7 +9,7 @@ import android.os.CountDownTimer;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class GameActivity extends AppCompatActivity implements OnCellClickListener {
+public class GameActivity extends AppCompatActivity implements OnCellClickListener, OnCellLongClickListener {
 
     // ---------------------------------- CONSTANTS
     final private int TIMER_LENGTH = 999000;
@@ -67,7 +67,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         gridRecyclerView = findViewById(R.id.game_grid);
         gridRecyclerView.setLayoutManager((new GridLayoutManager(this, level.getSize())));
         game = new MinesweeperGame(level.getSize(), level.getBombs());
-        mineGridRecyclerAdapter = new MineGridRecyclerAdapter(game.getMineGrid().getCells(), this);
+        mineGridRecyclerAdapter = new MineGridRecyclerAdapter(game.getMineGrid().getCells(), this, this::onCellLongClick);
         gridRecyclerView.setAdapter(mineGridRecyclerAdapter);
         flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
     }
@@ -97,4 +97,28 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         mineGridRecyclerAdapter.setCells((game.getMineGrid().getCells()));
     }
 
+    // ---------------------------------- ON CELL LONG CLICK
+    @Override
+    public void onCellLongClick(Cell cell) {
+        game.handleCellLongClick(cell);
+        flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+
+        if (!timerStarted){
+            countDownTimer.start();
+            timerStarted = true;
+        }
+
+        if (game.getIsGameOver()){
+            Toast.makeText(getApplicationContext(), "Game is Over", Toast.LENGTH_LONG).show();
+            game.getMineGrid().revealAllBombs();
+            countDownTimer.cancel();
+        }
+
+        if (game.isGameWon()){
+            Toast.makeText(getApplicationContext(), "Game is Won", Toast.LENGTH_LONG).show();
+            game.getMineGrid().revealAllBombs();
+        }
+
+        mineGridRecyclerAdapter.setCells((game.getMineGrid().getCells()));
+    }
 }

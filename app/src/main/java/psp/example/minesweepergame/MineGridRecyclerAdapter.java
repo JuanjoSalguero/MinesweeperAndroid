@@ -14,13 +14,15 @@ import java.util.List;
 public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecyclerAdapter.MineTileViewHolder> {
 
     // ---------------------------------- VARIABLES
-    private List<Cell> cells;                   // List of cells
-    private OnCellClickListener listener;       // On cell click listener
+    private List<Cell> cells;                       // List of cells
+    private OnCellClickListener listener;           // On cell click listener
+    private OnCellLongClickListener longListener;
 
     // ---------------------------------- CONSTRUCTOR
-    public MineGridRecyclerAdapter(List<Cell> cells, OnCellClickListener listener) {
+    public MineGridRecyclerAdapter(List<Cell> cells, OnCellClickListener listener, OnCellLongClickListener longListener) {
         this.cells = cells;
         this.listener = listener;
+        this.longListener = longListener;
     }
 
     @NonNull
@@ -62,13 +64,10 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    MinesweeperGame.flag(cell);
-                    valueTextView.setText(R.string.flag_box);
-                    valueTextView.setTextColor(Color.rgb(97, 97, 97));
+                    longListener.onCellLongClick(cell);
                     return true;
                 }
             });
-
 
             if(cell.getIsRevealed()){
                 // Display the value inside the textView (1, 2, 3, bombs, blanks...) for that tile int he grid

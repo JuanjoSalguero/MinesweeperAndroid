@@ -7,10 +7,10 @@ public class MinesweeperGame {
 
     // ---------------------------------- VARIABLES
     private static MineGrid mineGrid;
-    private static boolean clearMode;      // Verify if the game is clear mode or not
-    private boolean isGameOver;     // When we press a bomb
-    private boolean timeExpired;    // Time to complete the game
-    private static int flagCount;          // Flag count
+    private static boolean clearMode;       // Verify if the game is clear mode or not
+    private boolean isGameOver;             // When we press a bomb
+    private boolean timeExpired;            // Time to complete the game
+    private static int flagCount;           // Flag count
     private int numberOfBombs;
 
 
@@ -53,6 +53,13 @@ public class MinesweeperGame {
             if (clearMode) {
                 clear(cell);
             }
+        }
+    }
+
+    // Method to handle the click
+    public void handleCellLongClick(Cell cell) {
+        if (!isGameOver && !isGameWon() && !timeExpired){
+            flag(cell);
         }
     }
 
