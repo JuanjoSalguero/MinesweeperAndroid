@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -48,9 +47,6 @@ public class Levels extends AppCompatActivity {
         setContentView(R.layout.activity_levels);
 
         closeLevelsActivity();  // Closes levels activity
-        selectLevel_1();
-        selectLevel_2();
-        selectLevel_3();
     }
 
     // Method to close Levels Activity
@@ -60,41 +56,29 @@ public class Levels extends AppCompatActivity {
     }
 
     // Method to select level1
-    private void selectLevel_1(){
-        Button levelsButton = findViewById(R.id.level_1);
-        levelsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setSize(8);
-                setBombs(15);
-            }
-        });
-
+    public void selectLevel_1(View view){
+        setSize(8);
+        setBombs(15);
+        levelSelected();
     }
 
     // Method to select level2
-    private void selectLevel_2(){
-        Button levelsButton = findViewById(R.id.level_2);
-        levelsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setSize(12);
-                setBombs(30);
-            }
-        });
-
+    public void selectLevel_2(View view){
+        setSize(12);
+        setBombs(30);
+        levelSelected();
     }
 
     // Method to select level3
-    private void selectLevel_3(){
-        Button levelsButton = findViewById(R.id.level_3);
-        levelsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setSize(16);
-                setBombs(60);
-            }
-        });
-
+    public void selectLevel_3(View view){
+        setSize(16);
+        setBombs(60);
+        levelSelected();
     }
+
+    // Method to show message
+    public void levelSelected(){
+        Toast.makeText(this, "Level Selected", Toast.LENGTH_SHORT).show();
+    }
+
 }
