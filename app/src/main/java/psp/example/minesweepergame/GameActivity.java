@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     boolean timerStarted;           // Timer started or not
 
     // ---------------------------------- ON CREATE
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,12 +70,15 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         gridRecyclerView = findViewById(R.id.game_grid);
         gridRecyclerView.setLayoutManager((new GridLayoutManager(this, level.getSize())));
         game = new MinesweeperGame(level.getSize(), level.getBombs());
-        mineGridRecyclerAdapter = new MineGridRecyclerAdapter(game.getMineGrid().getCells(), this, this::onCellLongClick);
+        mineGridRecyclerAdapter = new MineGridRecyclerAdapter(game.getMineGrid().getCells(), this, this);
         gridRecyclerView.setAdapter(mineGridRecyclerAdapter);
         flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+
+        closeGameActivity();
     }
 
     // ---------------------------------- ON CELL CLICK
+    @SuppressLint("DefaultLocale")
     @Override
     public void onCellClick(Cell cell) {
         game.handleCellClick(cell);
@@ -84,13 +90,13 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         }
 
         if (game.getIsGameOver()){
-            Toast.makeText(getApplicationContext(), "Game is Over", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Game is Over", Toast.LENGTH_SHORT).show();
             game.getMineGrid().revealAllBombs();
             countDownTimer.cancel();
         }
 
         if (game.isGameWon()){
-            Toast.makeText(getApplicationContext(), "Game is Won", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Game is Won", Toast.LENGTH_SHORT).show();
             game.getMineGrid().revealAllBombs();
         }
 
@@ -98,6 +104,7 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     }
 
     // ---------------------------------- ON CELL LONG CLICK
+    @SuppressLint("DefaultLocale")
     @Override
     public void onCellLongClick(Cell cell) {
         game.handleCellLongClick(cell);
@@ -120,5 +127,11 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         }
 
         mineGridRecyclerAdapter.setCells((game.getMineGrid().getCells()));
+    }
+
+    // Method to close Game Activity
+    private void closeGameActivity(){
+        ImageButton leaveButton = findViewById(R.id.home_menu_button);
+        leaveButton.setOnClickListener(view -> finish());
     }
 }

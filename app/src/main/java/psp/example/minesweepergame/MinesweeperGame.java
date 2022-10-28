@@ -119,11 +119,6 @@ public class MinesweeperGame {
         }
     }
 
-    public static void toggleMode(){
-        if (clearMode) clearMode = !clearMode;
-
-    }
-
     // Method to count the flag flagged
     public static void flag(Cell cell){
         if(!cell.getIsRevealed()){

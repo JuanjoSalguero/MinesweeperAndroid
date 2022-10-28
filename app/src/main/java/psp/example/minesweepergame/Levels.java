@@ -16,8 +16,8 @@ public class Levels extends AppCompatActivity {
 
     // ---------------------------------- CONSTRUCTOR
     public Levels(){
-        this.size = 12;
-        this.bombs = 30;
+        this.size = 16;
+        this.bombs = 60;
     }
 
     // ---------------------------------- GETTERS / SETTERS
@@ -74,7 +74,7 @@ public class Levels extends AppCompatActivity {
 
     // Method to select level2
     private void selectLevel_2(){
-        Button levelsButton = findViewById(R.id.level_1);
+        Button levelsButton = findViewById(R.id.level_2);
         levelsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,7 +87,7 @@ public class Levels extends AppCompatActivity {
 
     // Method to select level3
     private void selectLevel_3(){
-        Button levelsButton = findViewById(R.id.level_1);
+        Button levelsButton = findViewById(R.id.level_3);
         levelsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

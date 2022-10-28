@@ -25,4 +25,5 @@
     <string name="default_count">000</string>
     <string name="image_flag">Flag in Game Image</string>
     <string name="image_timer">Timer in game Image</string>
+    <string name="leave_game">Leave the Game</string>
 </resources>
