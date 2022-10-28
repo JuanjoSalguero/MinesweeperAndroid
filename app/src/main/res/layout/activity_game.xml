@@ -27,7 +27,7 @@
         android:layout_height="96dp"
         android:contentDescription="@string/cartoon_bomb"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/flag"
+        app:layout_constraintEnd_toStartOf="@+id/flag2"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,18 +41,17 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024">
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/flags_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
             android:text="@string/default_count"
             android:textColor="#FF9800"
             android:textSize="48sp" />
@@ -62,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/smiley"
+            android:textColor="#616161"
             android:textSize="64sp" />
 
         <TextView
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/default_count"
             android:textColor="#FF9800"
             android:textSize="48sp" />
@@ -86,6 +86,32 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_layout"
         app:layout_constraintVertical_bias="0.092"
         tools:itemCount="8" />
+
+    <ImageView
+        android:id="@+id/flag_image"
+        android:layout_width="41dp"
+        android:layout_height="56dp"
+        android:contentDescription="@string/image_flag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.056"
+        app:srcCompat="@drawable/image_flag" />
+
+    <ImageView
+        android:id="@+id/timer_image"
+        android:layout_width="35dp"
+        android:layout_height="42dp"
+        android:contentDescription="@string/image_timer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065"
+        app:srcCompat="@drawable/image_timer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,12 +59,23 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
             itemView.setBackgroundColor(Color.WHITE);
 
             itemView.setOnClickListener(view -> listener.onCellClick(cell));
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    MinesweeperGame.flag(cell);
+                    valueTextView.setText(R.string.flag_box);
+                    valueTextView.setTextColor(Color.rgb(97, 97, 97));
+                    return true;
+                }
+            });
+
 
             if(cell.getIsRevealed()){
                 // Display the value inside the textView (1, 2, 3, bombs, blanks...) for that tile int he grid
                 if (cell.getValue() == Cell.BOMB) {
                     valueTextView.setText(R.string.bomb);
-                    itemView.setBackgroundColor(Color.TRANSPARENT);
+                    valueTextView.setTextColor(Color.rgb(97, 97, 97));
+                    itemView.setBackgroundColor(Color.rgb(192, 192, 192));
                 } else if (cell.getValue() == Cell.BLANK) {
                     valueTextView.setText("");
                     itemView.setBackgroundColor(Color.rgb(192, 192, 192));
@@ -98,7 +109,8 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
                     }
                 }
             }else if (cell.getIsFlagged()){
-                valueTextView.setText(R.string.flag);
+                valueTextView.setText(R.string.flag_box);
+                valueTextView.setTextColor(Color.rgb(97, 97, 97));
             }
         }
     }

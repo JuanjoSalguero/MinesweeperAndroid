@@ -21,6 +21,8 @@
     <string name="rules_button">RULES</string>
     <string name="smiley">🕹️</string>
     <string name="bomb">💣</string>
+    <string name="flag_box">🚩</string>
     <string name="default_count">000</string>
-
+    <string name="image_flag">Flag in Game Image</string>
+    <string name="image_timer">Timer in game Image</string>
 </resources>
