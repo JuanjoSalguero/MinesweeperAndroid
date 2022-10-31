@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         openSettingsActivity(); // Opens Settings Activity
-        openNewGameActivity();  // Opens New Game Activity
+        //openNewGameActivity();  // Opens New Game Activity
         openLevelsActivity();   // Opens Levels Activity
         exitApp();              // Exit the application
     }
@@ -29,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Settings.class)));
     }
 
-    // Method to switch to New Game activity
-    private void openNewGameActivity(){
-        Button newGameButton = findViewById(R.id.new_game_button);
-        newGameButton.setOnClickListener(view ->
-                startActivity(new Intent(MainActivity.this, GameActivity.class)));
+    public void openNewGame(View view){
+        Intent intent = new Intent(this,GameActivity.class);
+        int size = getIntent().getExtras().getInt("SizeSelected");
+        int bombs = getIntent().getExtras().getInt("BombsSelected");
+        intent.putExtra("SizeSelected",size);
+        intent.putExtra("BombsSelected",bombs);
+        startActivity(intent);
     }
 
     // Method to switch to Levels activity

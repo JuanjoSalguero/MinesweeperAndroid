@@ -29,6 +29,7 @@
         android:layout_width="245dp"
         android:layout_height="55dp"
         android:background="@drawable/button_border_orange"
+        android:onClick="openNewGame"
         android:text="@string/new_game"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"

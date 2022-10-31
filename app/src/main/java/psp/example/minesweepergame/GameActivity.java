@@ -25,6 +25,8 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     CountDownTimer countDownTimer;  // Count down
     int secondsElapsed;             // Seconds left
     boolean timerStarted;           // Timer started or not
+    int size;
+    int bombs;
 
     // ---------------------------------- ON CREATE
     @SuppressLint("DefaultLocale")
@@ -33,12 +35,15 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        size = getIntent().getExtras().getInt("SizeSelected");
+        bombs = getIntent().getExtras().getInt("BombsSelected");
+
         flagsCount = findViewById(R.id.flags_left);
 
         // Restart the game, reset the scores and times
         smiley = findViewById(R.id.smiley);
         smiley.setOnClickListener(view -> {
-            game = new MinesweeperGame(level.getSize(), level.getBombs());
+            game = new MinesweeperGame(size, bombs);
             mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
             timerStarted = false;
             countDownTimer.cancel();
@@ -65,11 +70,9 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
             }
         };
 
-        level = new Levels();
-
         gridRecyclerView = findViewById(R.id.game_grid);
-        gridRecyclerView.setLayoutManager((new GridLayoutManager(this, level.getSize())));
-        game = new MinesweeperGame(level.getSize(), level.getBombs());
+        gridRecyclerView.setLayoutManager((new GridLayoutManager(this, size)));
+        game = new MinesweeperGame(size, bombs);
         mineGridRecyclerAdapter = new MineGridRecyclerAdapter(game.getMineGrid().getCells(), this, this);
         gridRecyclerView.setAdapter(mineGridRecyclerAdapter);
         flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
