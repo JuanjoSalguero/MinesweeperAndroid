@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         openSettingsActivity(); // Opens Settings Activity
-        //openNewGameActivity();  // Opens New Game Activity
         openLevelsActivity();   // Opens Levels Activity
         exitApp();              // Exit the application
     }
@@ -31,11 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void openNewGame(View view){
         Intent intent = new Intent(this,GameActivity.class);
-        int size = getIntent().getExtras().getInt("SizeSelected");
-        int bombs = getIntent().getExtras().getInt("BombsSelected");
-        intent.putExtra("SizeSelected",size);
-        intent.putExtra("BombsSelected",bombs);
-        startActivity(intent);
+        intent.putExtra("SizeSelected",Levels.getSize());
+        intent.putExtra("BombsSelected",Levels.getBombs());
+        if (Levels.getSize() == 8 || Levels.getSize() == 12 || Levels.getSize() == 16) startActivity(intent);
+        else Toast.makeText(this, "Select a level to play", Toast.LENGTH_SHORT).show();        
     }
 
     // Method to switch to Levels activity

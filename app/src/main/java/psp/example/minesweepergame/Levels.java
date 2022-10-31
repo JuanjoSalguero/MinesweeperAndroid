@@ -11,18 +11,18 @@ import android.widget.Toast;
 public class Levels extends AppCompatActivity {
 
     // ---------------------------------- VARIABLES
-    private int size;       // Grid size
-    private int bombs;      // Number of bombs
+    private static int size;       // Grid size
+    private static int bombs;      // Number of bombs
 
     // ---------------------------------- CONSTRUCTOR
     public Levels(){
-        this.size = 12;
-        this.bombs = 30;
+        this.size = 8;
+        this.bombs = 15;
     }
 
     // ---------------------------------- GETTERS / SETTERS
     // size getter
-    public int getSize() {
+    public static int getSize() {
         return size;
     }
 
@@ -32,7 +32,7 @@ public class Levels extends AppCompatActivity {
     }
 
     // bombs getter
-    public int getBombs() {
+    public static int getBombs() {
         return bombs;
     }
 
@@ -46,8 +46,6 @@ public class Levels extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
-
-
 
         goToMainActivity();  // Closes levels activity
     }
@@ -64,7 +62,7 @@ public class Levels extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("SizeSelected", getSize());
         intent.putExtra("BombsSelected", getBombs());
-        startActivity(intent);
+        finish();
     }
 
     // Method to select level1

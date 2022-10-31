@@ -20,13 +20,10 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     RecyclerView gridRecyclerView;
     MineGridRecyclerAdapter mineGridRecyclerAdapter;
     MinesweeperGame game;
-    Levels level;
     TextView smiley, timer, flagsCount;         // Smiley face, timer seconds
     CountDownTimer countDownTimer;  // Count down
     int secondsElapsed;             // Seconds left
     boolean timerStarted;           // Timer started or not
-    int size;
-    int bombs;
 
     // ---------------------------------- ON CREATE
     @SuppressLint("DefaultLocale")
@@ -35,15 +32,12 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        size = getIntent().getExtras().getInt("SizeSelected");
-        bombs = getIntent().getExtras().getInt("BombsSelected");
-
         flagsCount = findViewById(R.id.flags_left);
 
         // Restart the game, reset the scores and times
         smiley = findViewById(R.id.smiley);
         smiley.setOnClickListener(view -> {
-            game = new MinesweeperGame(size, bombs);
+            game = new MinesweeperGame(Levels.getSize(), Levels.getBombs());
             mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
             timerStarted = false;
             countDownTimer.cancel();
@@ -71,8 +65,8 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
         };
 
         gridRecyclerView = findViewById(R.id.game_grid);
-        gridRecyclerView.setLayoutManager((new GridLayoutManager(this, size)));
-        game = new MinesweeperGame(size, bombs);
+        gridRecyclerView.setLayoutManager((new GridLayoutManager(this, Levels.getSize())));
+        game = new MinesweeperGame(Levels.getSize(), Levels.getBombs());
         mineGridRecyclerAdapter = new MineGridRecyclerAdapter(game.getMineGrid().getCells(), this, this);
         gridRecyclerView.setAdapter(mineGridRecyclerAdapter);
         flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
