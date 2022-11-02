@@ -14,12 +14,6 @@ public class Levels extends AppCompatActivity {
     private static int size;       // Grid size
     private static int bombs;      // Number of bombs
 
-    // ---------------------------------- CONSTRUCTOR
-    public Levels(){
-        this.size = 8;
-        this.bombs = 15;
-    }
-
     // ---------------------------------- GETTERS / SETTERS
     // size getter
     public static int getSize() {

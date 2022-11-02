@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("SizeSelected",Levels.getSize());
         intent.putExtra("BombsSelected",Levels.getBombs());
         if (Levels.getSize() == 8 || Levels.getSize() == 12 || Levels.getSize() == 16) startActivity(intent);
-        else Toast.makeText(this, "Select a level to play", Toast.LENGTH_SHORT).show();        
+        else Toast.makeText(this, "Select a level to play", Toast.LENGTH_SHORT).show();
     }
 
     // Method to switch to Levels activity

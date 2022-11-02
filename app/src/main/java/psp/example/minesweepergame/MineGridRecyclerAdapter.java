@@ -1,6 +1,7 @@
 package psp.example.minesweepergame;
 
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
     private List<Cell> cells;                       // List of cells
     private OnCellClickListener listener;           // On cell click listener
     private OnCellLongClickListener longListener;
+    MediaPlayer mp;
 
     // ---------------------------------- CONSTRUCTOR
     public MineGridRecyclerAdapter(List<Cell> cells, OnCellClickListener listener, OnCellLongClickListener longListener) {
@@ -72,6 +74,7 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
             if(cell.getIsRevealed()){
                 // Display the value inside the textView (1, 2, 3, bombs, blanks...) for that tile int he grid
                 if (cell.getValue() == Cell.BOMB) {
+
                     valueTextView.setText(R.string.bomb);
                     valueTextView.setTextColor(Color.rgb(97, 97, 97));
                     itemView.setBackgroundColor(Color.rgb(192, 192, 192));

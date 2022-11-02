@@ -43,7 +43,9 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
             countDownTimer.cancel();
             secondsElapsed = 0;
             timer.setText(R.string.default_count);
-            flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+            if (!flagsCount.getText().equals("000")){
+                flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+            }
         });
 
         // Setting timer
@@ -79,7 +81,9 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     @Override
     public void onCellClick(Cell cell) {
         game.handleCellClick(cell);
-        flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+        if (!flagsCount.getText().equals("000")){
+            flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+        }
 
         if (!timerStarted){
             countDownTimer.start();
@@ -105,7 +109,9 @@ public class GameActivity extends AppCompatActivity implements OnCellClickListen
     @Override
     public void onCellLongClick(Cell cell) {
         game.handleCellLongClick(cell);
-        flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+        if (!flagsCount.getText().equals("000")){
+            flagsCount.setText(String.format("%03d", game.getNumberOfBombs() - game.getFlagCount()));
+        }
 
         if (!timerStarted){
             countDownTimer.start();
