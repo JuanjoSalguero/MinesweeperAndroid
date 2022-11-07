@@ -18,7 +18,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        muteAndUnmute();    // To mute and unmute the sound
+        //muteAndUnmute();    // To mute and unmute the sound (not implemented)
         aboutButton();      // To open about information
         rulesButton();      // To open rules information
         closeSettingsActivity();  // Closes Settings activity
@@ -31,7 +31,8 @@ public class Settings extends AppCompatActivity {
     }
 
     // Method to mute or unmuted the sound
-    private void muteAndUnmute(){
+    // Method implemented but no working because there is no background music
+    /*private void muteAndUnmute(){
         // Declare buttons
         ImageButton muteButton = findViewById(R.id.sound_off_button);
         ImageButton unmuteButton = findViewById(R.id.sound_on_button);
@@ -57,7 +58,7 @@ public class Settings extends AppCompatActivity {
                     "Sound unmuted", Toast.LENGTH_SHORT);
             unmuteToast.show();
         });
-    }
+    }*/
 
     // Method to acced the about information
     private void aboutButton(){

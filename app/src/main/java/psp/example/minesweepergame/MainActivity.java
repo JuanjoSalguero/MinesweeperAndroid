@@ -29,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Settings.class)));
     }
 
+    // Method to open the New Game Activity
     public void openNewGame(View view){
         Intent intent = new Intent(this,GameActivity.class);
         intent.putExtra("SizeSelected",Levels.getSize());
         intent.putExtra("BombsSelected",Levels.getBombs());
+        // If no level is selected, Toast message(first select a level)
         if (Levels.getSize() == 8 || Levels.getSize() == 12 || Levels.getSize() == 16) startActivity(intent);
         else Toast.makeText(this, "Select a level to play", Toast.LENGTH_SHORT).show();
     }

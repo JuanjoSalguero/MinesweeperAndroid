@@ -89,6 +89,7 @@ public class MineGrid {
         return cells.get(toIndex(x, y));
     }
 
+    // Method to check tile adjacent cells
     public List<Cell> adjacentCells(int x, int y) {
         List<Cell> adjacentCells = new ArrayList<>();
 
@@ -104,7 +105,7 @@ public class MineGrid {
         cellsList.add(cellAt(x, y+1));
         cellsList.add(cellAt(x+1, y+1));
 
-        // Check all the cells, if it it not nul, add it to adjacentCells arraylist
+        // Check all the cells, if it it not null, add it to adjacentCells arraylist
         for (Cell cell: cellsList) {
             if (cell != null) {
                 adjacentCells.add(cell);
@@ -114,6 +115,7 @@ public class MineGrid {
         return adjacentCells;
     }
 
+    // Method to reeal all boms
     public void revealAllBombs(){
         for (Cell cell: cells){
             if (cell.getValue() == Cell.BOMB){

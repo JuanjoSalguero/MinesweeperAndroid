@@ -2,13 +2,13 @@ package psp.example.minesweepergame;
 
 public class Cell {
     // ---------------------------------- CONSTANTS
-    public static final int BOMB = -1;
-    public static final int BLANK = 0;
+    public static final int BOMB = -1;      // Bomb count
+    public static final int BLANK = 0;      // Blank count
 
     // ---------------------------------- VARIABLES
-    private int value;              // Ech cell value
-    protected boolean isRevealed;     // Cell revealed or not
-    private boolean isFlagged;      // Cell flagged or not
+    private int value;                  // Each cell value
+    protected boolean isRevealed;       // Cell revealed or not
+    private boolean isFlagged;          // Cell flagged or not
 
     // ---------------------------------- CONSTRUCTOR
     public Cell(int value){

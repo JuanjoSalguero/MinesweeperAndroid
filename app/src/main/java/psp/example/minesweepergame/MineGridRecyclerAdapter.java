@@ -17,8 +17,7 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
     // ---------------------------------- VARIABLES
     private List<Cell> cells;                       // List of cells
     private OnCellClickListener listener;           // On cell click listener
-    private OnCellLongClickListener longListener;
-    MediaPlayer mp;
+    private OnCellLongClickListener longListener;   // On cell long click listener
 
     // ---------------------------------- CONSTRUCTOR
     public MineGridRecyclerAdapter(List<Cell> cells, OnCellClickListener listener, OnCellLongClickListener longListener) {
@@ -60,8 +59,9 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
         }
 
         public void bind(final Cell cell) {
-            itemView.setBackgroundColor(Color.WHITE);
+            itemView.setBackgroundColor(Color.WHITE);   // Grid color
 
+            // Adding to the item view on click and on long click listeners
             itemView.setOnClickListener(view -> listener.onCellClick(cell));
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -71,10 +71,11 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
                 }
             });
 
+            // Method to control if the cell is revealed or not and depending on it make:
+            // set bomb, set number (1-8), set flag
             if(cell.getIsRevealed()){
                 // Display the value inside the textView (1, 2, 3, bombs, blanks...) for that tile int he grid
                 if (cell.getValue() == Cell.BOMB) {
-
                     valueTextView.setText(R.string.bomb);
                     valueTextView.setTextColor(Color.rgb(97, 97, 97));
                     itemView.setBackgroundColor(Color.rgb(192, 192, 192));
@@ -110,7 +111,7 @@ public class MineGridRecyclerAdapter extends RecyclerView.Adapter<MineGridRecycl
                         itemView.setBackgroundColor(Color.rgb(192, 192, 192));
                     }
                 }
-            }else if (cell.getIsFlagged()){
+            }else if (cell.getIsFlagged()){ // If cell is not flagged (on long press)
                 valueTextView.setText(R.string.flag_box);
                 valueTextView.setTextColor(Color.rgb(97, 97, 97));
             }

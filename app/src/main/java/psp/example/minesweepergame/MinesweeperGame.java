@@ -11,7 +11,7 @@ public class MinesweeperGame {
     private boolean isGameOver;             // When we press a bomb
     private boolean timeExpired;            // Time to complete the game
     private static int flagCount;           // Flag count
-    private int numberOfBombs;
+    private int numberOfBombs;              // Number of bombs
 
 
     // ---------------------------------- CONSTRUCTOR
@@ -49,20 +49,24 @@ public class MinesweeperGame {
     // ---------------------------------- METHODS
     // Method to handle the click
     public void handleCellClick(Cell cell) {
+        // if same is not over, is not won and time is not expired
         if (!isGameOver && !isGameWon() && !timeExpired){
             if (clearMode) {
-                clear(cell);
+                clear(cell);    // Clear cell
             }
         }
     }
 
-    // Method to handle the click
+    // Method to handle the long click
     public void handleCellLongClick(Cell cell) {
+        // if same is not over, is not won and time is not expired
         if (!isGameOver && !isGameWon() && !timeExpired){
-            flag(cell);
+            flag(cell); // Flag cell
         }
     }
 
+    // Method to clear the cell
+    // This method check
     public void clear(Cell cell){
         int index = getMineGrid().getCells().indexOf(cell);
         getMineGrid().getCells().get(index).setIsRevealed(true);
@@ -74,6 +78,7 @@ public class MinesweeperGame {
 
             toCheckAdjacents.add(cell); // Add the cell
 
+            // While the check adjacent size > 0
             while (toCheckAdjacents.size() > 0) {
                 Cell c = toCheckAdjacents.get(0);
                 int cellIndex = getMineGrid().getCells().indexOf(c);
@@ -104,14 +109,15 @@ public class MinesweeperGame {
         }
     }
 
+    // Method for game won
     public boolean isGameWon() {
         int numbersUnrevealed = 0;
         for (Cell c: getMineGrid().getCells()) {
+            // If the cell is not a bomb, is not blank and is not revealed
             if (c.getValue() != Cell.BOMB && c.getValue() != Cell.BLANK && !c.getIsRevealed()) {
-                numbersUnrevealed++;
+                numbersUnrevealed++; // +1 numbersUnrevealed
             }
         }
-
         if (numbersUnrevealed == 0) {
             return true;
         } else {
@@ -121,18 +127,19 @@ public class MinesweeperGame {
 
     // Method to count the flag flagged
     public static void flag(Cell cell){
-        if(!cell.getIsRevealed()){
-            cell.setIsFlagged(!cell.getIsFlagged());
+        if(!cell.getIsRevealed()){  // If the cell is not revealed
+            cell.setIsFlagged(!cell.getIsFlagged());    // Flagg it
             int count = 0;
             for (Cell c: getMineGrid().getCells()){
                 if (c.getIsFlagged()){
-                    count++;
+                    count++;    // For each cell flagged, count +1
                 }
             }
-            flagCount = count;
+            flagCount = count;  // Set flag count number
         }
     }
 
+    // Out of time method
     public void outOfTime(){
         timeExpired = true;
     }

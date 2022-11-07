@@ -57,10 +57,10 @@
             android:textSize="48sp" />
 
         <TextView
-            android:id="@+id/smiley"
+            android:id="@+id/restartIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/smiley"
+            android:text="@string/restartIcon"
             android:textColor="#616161"
             android:textSize="64sp" />
 
