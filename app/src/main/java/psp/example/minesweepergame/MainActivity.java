@@ -17,9 +17,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startService(new Intent(this, MyService.class));
+
         openSettingsActivity(); // Opens Settings Activity
         openLevelsActivity();   // Opens Levels Activity
         exitApp();              // Exit the application
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, MyService.class));
     }
 
     // Method to switch to Settings activity

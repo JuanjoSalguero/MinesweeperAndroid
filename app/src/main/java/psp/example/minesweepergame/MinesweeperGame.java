@@ -125,7 +125,7 @@ public class MinesweeperGame {
         }
     }
 
-    // Method to count the flag flagged
+    // Method to count the cells flagged
     public static void flag(Cell cell){
         if(!cell.getIsRevealed()){  // If the cell is not revealed
             cell.setIsFlagged(!cell.getIsFlagged());    // Flagg it
